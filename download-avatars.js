@@ -4,16 +4,16 @@ var fs = require('fs');
 var path = require ('path');
 var args = process.argv.splice(2,2);
 
+//If not enough arguments provided (repoOwner and repoName), throws error message
 if (args.length < 2) {
   console.log("Not enough arguments provided");
   process.exit();
 }
 
-
+//Process started
 console.log('Welcome to the Github Avatar Downloader!')
 
 function getRepoContributors(repoOwner, repoName, cb){
-
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" +repoName + "/contributors",
     headers: {
@@ -22,6 +22,7 @@ function getRepoContributors(repoOwner, repoName, cb){
     }
   };
 
+  // Changes data string to object
   request(options, function(err, res, body){
     var data = JSON.parse(body);
     cb(err, data);
