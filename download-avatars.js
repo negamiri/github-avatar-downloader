@@ -7,6 +7,7 @@ var args = process.argv;
 //If not enough arguments provided (repoOwner and repoName), throws error message
 if (args.length < 4) {
   console.log("Not enough arguments provided");
+  process.exit();
 }
 
 //Process started
