@@ -19,7 +19,6 @@ function getRepoContributors(repoOwner, repoName, cb){
     headers: {
       'User-agent': 'request',
       'Authorization':' token ' + tokens.GITHUB_TOKEN
-
     }
   };
 
@@ -27,7 +26,6 @@ function getRepoContributors(repoOwner, repoName, cb){
     var data = JSON.parse(body);
     cb(err, data);
   });
-
 }
 
 function downloadImageByURL(url, filepath){
@@ -43,5 +41,4 @@ getRepoContributors(process.argv[2], process.argv[3], function(err, result){
   result.forEach(function(item){
     downloadImageByURL(item.avatar_url, path.resolve(__dirname, 'avatars/' + item.login + ".jpg"));
   })
-
 })
